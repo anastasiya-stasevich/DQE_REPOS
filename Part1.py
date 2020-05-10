@@ -55,6 +55,50 @@ class fb2:
             cnt = Counter(word_list)
         return cnt
 
+    def get_p_counter_uppercase(self, par):
+        cnt = Counter()
+        par_text = par.text
+        if par_text is not None:
+            translator = par_text.maketrans('', '', string.punctuation)
+            word_list = par_text.translate(translator).replace('—', '').replace('…', '').split()
+            #cnt = Counter(word_list)
+            for word in word_list:
+                if not word[0].isupper():
+                    word_list.remove(word)
+        print(type(word_list))
+        #return cnt
+
+    def get_p_number_of_uppercase(self, par):
+        cnt = 0
+        par_text = par.text
+        if par_text is not None:
+            translator = par_text.maketrans('', '', string.punctuation)
+            word_list = par_text.translate(translator).replace('—', '').replace('…', '').split()
+            for word in word_list:
+                if word[0].isupper():
+                    cnt+=1
+        return cnt
+
+    def get_number_of_uppercase_words(self, filepath):
+        par_lst = self.get_list_of_paragraphs(filepath)
+        cnt = 0
+        for par in par_lst:
+            cnt+=self.get_p_number_of_uppercase(par)
+        return cnt
+
+    def get_number_of_lowercase_words(self, filepath):
+        return self.get_number_of_words(filepath) - self.get_number_of_uppercase_words(filepath)
+
+    def get_number_of_letters(self, filepath):
+        par_lst = self.get_list_of_paragraphs(filepath)
+        cnt = 0
+        for par in par_lst:
+            par_text = par.text
+            if par_text is not None:
+                translator = par_text.maketrans('', '', string.punctuation)
+                word_list = par_text.translate(translator).replace('—', '').replace('…', '').replace(' ', '')
+            cnt+=len(word_list)
+        return cnt
 
 object_fb2 = fb2()
 fb2_list = object_fb2.dir_files()
@@ -66,6 +110,10 @@ for fb2_file in fb2_list:
     print(object_fb2.get_number_of_words(fb2_file))
     print(object_fb2.get_count_of_unique_words(fb2_file))
     # object_fb2.get_count_of_unique_words(fb2_file)
+    print(object_fb2.get_number_of_uppercase_words(fb2_file))
+    print(object_fb2.get_number_of_lowercase_words(fb2_file))
+    print(object_fb2.get_number_of_letters(fb2_file))
+
 
     # for paragraph in object_fb2.get_list_of_paragraphs(fb2_file):
     #     print('')
