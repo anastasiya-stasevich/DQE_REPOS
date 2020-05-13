@@ -64,7 +64,6 @@ class fb2:
             cnt = Counter(word_list)
         return cnt
 
-# to update
     def get_p_counter_uppercase(self, par):
         cnt = Counter()
         par_text = par.text
