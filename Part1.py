@@ -116,9 +116,9 @@ class fb2:
         dict.update({"book_name": object_fb2.get_book_title(filepath)})
         dict.update({"number_of_paragraph": object_fb2.get_number_of_paragraphs(filepath)})
         dict.update({"number_of_words": object_fb2.get_number_of_words(filepath)})
-        dict.update({"number_of_letters": object_fb2.get_number_of_lowercase_words(filepath)})
+        dict.update({"number_of_letters": object_fb2.get_number_of_letters(filepath)})
         dict.update({"words_with_capital_letters": object_fb2.get_number_of_uppercase_words(filepath)})
-        dict.update({"words_in_lowercase": object_fb2.get_number_of_letters(filepath)})
+        dict.update({"words_in_lowercase": object_fb2.get_number_of_lowercase_words(filepath)})
         return dict
 
 
