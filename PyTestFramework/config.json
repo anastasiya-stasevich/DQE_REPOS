@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "database": "C:/_WRK/Trainings/DQE_2020/PycharmData/Source/Words.db",
+    "test_data_folder": "C:/_WRK/Trainings/DQE_2020/PycharmProjects/PyTestFramework/test_data"
+  },
+
+  "uat": {
+  }
+}

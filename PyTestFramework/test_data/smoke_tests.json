@@ -1,0 +1,69 @@
+{
+  "tests": [
+    {
+      "name": "T1 Summary Records Quantity",
+      "query": "SELECT count(1) FROM Summary;",
+      "expected": 2
+    },
+    {
+      "name": "T2 Details_Example Records Quantity",
+      "query": "SELECT count(1) FROM Details_Example;",
+      "expected": 13104
+    },
+    {
+      "name": "T3 Details_TestBook Records Quantity",
+      "query": "SELECT count(1) FROM Details_TestBook;",
+      "expected": 3526
+    },
+    {
+      "name": "T4 Summary file_name values",
+      "query": "SELECT file_name FROM Summary ORDER BY file_name;",
+      "expected": ["Example", "TestBook"]
+    },
+    {
+      "name": "T5 Summary book_name value",
+      "query": "SELECT book_name FROM Summary WHERE file_name = 'Example';",
+      "expected": "Цветы для Элджернона"
+    },
+    {
+      "name": "T6 Summary number_of_paragraph value",
+      "query": "SELECT number_of_paragraph FROM Summary WHERE file_name = 'Example';",
+      "expected": 2267
+    },
+    {
+      "name": "T7 Summary number_of_words value",
+      "query": "SELECT number_of_words FROM Summary WHERE file_name = 'Example';",
+      "expected": 61025
+    },
+    {
+      "name": "T8 Summary number_of_letters value",
+      "query": "SELECT number_of_letters FROM Summary WHERE file_name = 'Example';",
+      "expected": 297831
+    },
+    {
+      "name": "T9 Summary words_with_capital_letters value",
+      "query": "SELECT words_with_capital_letters FROM Summary WHERE file_name = 'Example';",
+      "expected": 8103
+    },
+    {
+      "name": "T10 Summary words_in_lowercase value",
+      "query": "SELECT words_in_lowercase FROM Summary WHERE file_name = 'Example';",
+      "expected": 52922
+    },
+    {
+      "name": "T11 Summary and Details Total Words Compliance",
+      "query": "SELECT sum(count) from Details_Example;",
+      "expected": 61025
+    },
+    {
+      "name": "T12 Summary and Details Capital Letter Words Compliance",
+      "query": "SELECT sum(count_uppercase) from Details_Example;",
+      "expected": 8103
+    },
+    {
+      "name": "T13 Summary data compliance",
+      "query": "SELECT number_of_words - words_with_capital_letters - words_in_lowercase FROM Summary WHERE file_name = 'Example';",
+      "expected": 0
+    }
+  ]
+}

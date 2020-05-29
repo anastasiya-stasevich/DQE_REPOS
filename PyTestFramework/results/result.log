@@ -1,0 +1,56 @@
+
+
+Testing of C:/_WRK/Trainings/DQE_2020/PycharmProjects/PyTestFramework/test_data\smoke_tests.json was started
+
+
+Test case 'T1 Summary Records Quantity'
+PASS. Result is '2' as expected
+	Query: SELECT count(1) FROM Summary;
+
+Test case 'T2 Details_Example Records Quantity'
+PASS. Result is '13104' as expected
+	Query: SELECT count(1) FROM Details_Example;
+
+Test case 'T3 Details_TestBook Records Quantity'
+PASS. Result is '3526' as expected
+	Query: SELECT count(1) FROM Details_TestBook;
+
+Test case 'T4 Summary file_name values'
+PASS. Result is '['Example', 'TestBook']' as expected
+	Query: SELECT file_name FROM Summary ORDER BY file_name;
+
+Test case 'T5 Summary book_name value'
+PASS. Result is 'Цветы для Элджернона' as expected
+	Query: SELECT book_name FROM Summary WHERE file_name = 'Example';
+
+Test case 'T6 Summary number_of_paragraph value'
+PASS. Result is '2267' as expected
+	Query: SELECT number_of_paragraph FROM Summary WHERE file_name = 'Example';
+
+Test case 'T7 Summary number_of_words value'
+PASS. Result is '61025' as expected
+	Query: SELECT number_of_words FROM Summary WHERE file_name = 'Example';
+
+Test case 'T8 Summary number_of_letters value'
+PASS. Result is '297831' as expected
+	Query: SELECT number_of_letters FROM Summary WHERE file_name = 'Example';
+
+Test case 'T9 Summary words_with_capital_letters value'
+PASS. Result is '8103' as expected
+	Query: SELECT words_with_capital_letters FROM Summary WHERE file_name = 'Example';
+
+Test case 'T10 Summary words_in_lowercase value'
+PASS. Result is '52922' as expected
+	Query: SELECT words_in_lowercase FROM Summary WHERE file_name = 'Example';
+
+Test case 'T11 Summary and Details Total Words Compliance'
+PASS. Result is '61025' as expected
+	Query: SELECT sum(count) from Details_Example;
+
+Test case 'T12 Summary and Details Capital Letter Words Compliance'
+FAIL. Result is '1332', but expected '8103'
+	Query: SELECT sum(count_uppercase) from Details_Example;
+
+Test case 'T13 Summary data compliance'
+PASS. Result is '0' as expected
+	Query: SELECT number_of_words - words_with_capital_letters - words_in_lowercase FROM Summary WHERE file_name = 'Example';
